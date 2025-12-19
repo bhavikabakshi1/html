@@ -1,0 +1,43 @@
+<!--
+Practice 3: Button Hover Effects, CSS Animation & Basic Responsive Design
+-Create a button and apply hower effects using pseudo-classes
+-Use a media query to make the button change style in mobile screens
+-Understand how interactivity and responsiveness work in CSS
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Hover Effects & Responsive Design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #008CBA;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #005f73;
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <button class="btn">Hover Me!</button>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!--
+Create an Interactive CSS Animation Playground webpage that demonstrates 
+different animation techniques in one single HTML file. 
+Your page must include:
+1. A Hover Transition Box
+    - A small box that smoothly grows and changes color when the user hovers on it
+2. A Stylish Transform Example
+    - A button rotated as if it is tilted, showing static transform usage
+3. A Moving Character/Object
+    - Create a box that slides left to right like a bouncing object using keyframes
+4. A Magical Element with Multiple Animations
+    - An element that glows, fades, and scales at the same time using multiple animations
+5. Animate.css Heading
+    - Use Animate.css to make the main heading "bounce" or "lightSpeedIn" when the page loads
+6. A Mini 3D Cube
+    - Build a simple 3D cube with at least two visible faces, rotating continously
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive CSS Animation Playground</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f6f8fb;
+            padding: 24px;
+            color: #222;
+        }
+        h1 {
+            margin-bottom: 18px;
+            font-size: 2rem;
+        }
+        .demo {
+            max-width: 720px;
+            margin: 18px auto;
+            padding: 12px 18px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+        .demo h2 {
+            margin: 8px 0 8px;
+            font-size: 1.1rem;
+        }
+        .caption {
+            margin: 8px 0 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .hover-box {
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+            margin: 12px auto;
+            transition: transform 280ms cubic-bezier(.2,.9,.3,1), background-color 280ms ease, box-shadow 280ms ease;
+            border-radius: 8px;
+        }
+        .hover-box:hover,
+        .hover-box:focus {
+            transform: scale(1.6);
+            background-color: #e74c3c;
+            box-shadow: 0 12px 30px rgba(231,76,60,0.24);
+        }
+
+        .tilted-button {
+            display: inline-block;
+            padding: 12px 22px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transform: rotate(-12deg);
+            margin: 12px;
+            border-radius: 6px;
+            box-shadow: 0 6px 14px rgba(46,204,113,0.18);
+            transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+        .tilted-button:focus,
+        .tilted-button:hover {
+            transform: rotate(-12deg) scale(1.04);
+            box-shadow: 0 10px 26px rgba(46,204,113,0.26);
+            outline: none;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(-140px) translateY(0); }
+            50% { transform: translateX(140px) translateY(-8px); }
+            100% { transform: translateX(-140px) translateY(0); }
+        }
+        .bouncing-box {
+            width: 48px;
+            height: 48px;
+            background-color: #9b59b6;
+            margin: 18px auto;
+            border-radius: 8px;
+            animation: slide 2s cubic-bezier(.4,.0,.2,1) infinite;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 6px rgba(241,196,15,0.6); }
+            50% { box-shadow: 0 0 28px rgba(241,196,15,0.92); }
+            100% { box-shadow: 0 0 6px rgba(241,196,15,0.6); }
+        }
+        @keyframes fadeScale {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.25); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes floatY {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        .magical-element {
+            width: 110px;
+            height: 110px;
+            background-color: #f1c40f;
+            margin: 14px auto;
+            border-radius: 14px;
+            animation: glow 3s ease-in-out infinite, fadeScale 2.6s ease-in-out infinite, floatY 6s ease-in-out infinite;
+        }
+
+        .cube-container {
+            perspective: 900px;
+            width: 200px;
+            height: 160px;
+            margin: 20px auto;
+        }
+        .cube {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin: 8px auto;
+            transform-style: preserve-3d;
+            transform-origin: 50% 50%;
+            transform: rotateX(-20deg) rotateY(0deg);
+            animation: rotateCube 6s linear infinite;
+        }
+        .cube-face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 6px;
+            backface-visibility: hidden;
+            display: block;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            border: 2px solid rgba(0,0,0,0.06);
+        }
+        .face-front { background: linear-gradient(135deg,#3498db,#2980b9); transform: translateZ(50px); }
+        .face-back { background: linear-gradient(135deg,#9b59b6,#8e44ad); transform: rotateY(180deg) translateZ(50px); }
+        .face-right { background: linear-gradient(135deg,#1abc9c,#16a085); transform: rotateY(90deg) translateZ(50px); }
+        .face-left { background: linear-gradient(135deg,#e74c3c,#c0392b); transform: rotateY(-90deg) translateZ(50px); }
+        .face-top { background: linear-gradient(135deg,#f39c12,#d35400); transform: rotateX(90deg) translateZ(50px); }
+        .face-bottom { background: linear-gradient(135deg,#34495e,#2c3e50); transform: rotateX(-90deg) translateZ(50px); }
+        @keyframes rotateCube {
+            from { transform: rotateX(-20deg) rotateY(0deg); }
+            to { transform: rotateX(-20deg) rotateY(360deg); }
+        }
+
+        .tilted-button:focus, .hover-box:focus { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    </style>
+</head>
+<body>
+    <h1 class="animate__animated animate__bounce">Interactive CSS Animation Playground</h1>
+
+    <section class="demo" aria-labelledby="hover-title">
+        <h2 id="hover-title">Hover Transition Box</h2>
+        <div class="hover-box" role="img" aria-label="Box that grows and changes color on hover"></div>
+        <p class="caption">Hover to grow and change color smoothly.</p>
+    </section>
+
+    <section class="demo" aria-labelledby="tilt-title">
+        <h2 id="tilt-title">Stylish Transform Example</h2>
+        <button class="tilted-button" aria-pressed="false">Tilted Button</button>
+        <p class="caption">A statically tilted button using CSS transform.</p>
+    </section>
+
+    <section class="demo" aria-labelledby="move-title">
+        <h2 id="move-title">Moving Character / Object</h2>
+        <div class="bouncing-box" role="presentation" aria-hidden="true"></div>
+        <p class="caption">A box sliding left-right like a bouncing object (keyframes).</p>
+    </section>
+
+    <section class="demo" aria-labelledby="magic-title">
+        <h2 id="magic-title">Magical Element (Multiple Animations)</h2>
+        <div class="magical-element" role="img" aria-label="Element that glows, fades and scales"></div>
+        <p class="caption">Glows, fades and scales using multiple simultaneous animations.</p>
+    </section>
+
+    <section class="demo" aria-labelledby="cube-title">
+        <h2 id="cube-title">Mini 3D Cube</h2>
+        <div class="cube-container" aria-hidden="true">
+            <div class="cube">
+                <div class="cube-face face-front"></div>
+                <div class="cube-face face-right"></div>
+                <div class="cube-face face-back"></div>
+                <div class="cube-face face-left"></div>
+                <div class="cube-face face-top"></div>
+                <div class="cube-face face-bottom"></div>
+            </div>
+        </div>
+        <p class="caption">A simple 3D cube with multiple visible faces rotating continuously.</p>
+    </section>
+</body>
+</html>

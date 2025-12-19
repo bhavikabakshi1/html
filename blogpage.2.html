@@ -1,0 +1,58 @@
+<!--
+Practice 1: Blog Page Basics Using CSS Selectors and Box Model
+-Create a small blog section using html
+-Style the heading, author name, and paragraph using class, ID, and nested CSS selectors
+-Apply margin, padding, background, and border to understand the CSS Box Model
+-Observe how external CSS affects HTML structure
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page Basics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        .blog-post {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .blog-post h2 {
+            color: #333;
+        }
+        .author {
+            font-style: italic;
+            color: #555;
+        }
+        .content p {
+            line-height: 1.6;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <h2 class="title">Understanding CSS Box Model</h2>
+        <p class="author">by Jane Doe</p>
+        <div class="content">
+            <p>The CSS Box Model is a fundamental concept in web design that describes the rectangular boxes generated for elements in the document tree. It consists of margins, borders, padding, and the actual content area.</p>
+            <p>By mastering the box model, you can control the layout and spacing of your web pages effectively.</p>
+        </div>
+    </div>
+
+    <div class="blog-post">
+        <h2 class="title">Getting Started with CSS Selectors</h2>
+        <p class="author">by John Smith</p>
+        <div class="content">
+            <p>CSS selectors are patterns used to select the elements you want to style. They can be based on element types, classes, IDs, and more.</p>
+            <p>Using selectors effectively allows you to apply styles to specific parts of your HTML without affecting others.</p>
+        </div>
+    </div>
+</body>
+</html>

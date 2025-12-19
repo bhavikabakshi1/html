@@ -1,0 +1,54 @@
+<!--
+PRACTICE-5: Resume Header using Flexbox
+Create a resume header with Photo(left) and Name + Contact details(right) using Flexbox
+Explaination:
+Flexbox easily places two sections side-by-side
+display: flex + align-items: center keeps them alligned
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Header with Flexbox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .resume-header {
+            display: flex; /* Use Flexbox to arrange items side-by-side */
+            align-items: center; /* Align items vertically centered */
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ccc; /* Placeholder for photo */
+            margin-right: 20px;
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-details h1 {
+            margin: 0;
+        }
+        .contact-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-header">
+        <div class="photo"></div>
+        <div class="contact-details">
+            <h1>John Doe</h1>
+            <p>Email: john.doe@example.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+    </div>
+</body>
+</html>
